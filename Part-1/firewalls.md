@@ -1,6 +1,6 @@
 ## Firewalls
 
- ASA does not belong to the same operating system family as IOS. Because of this, the `line console 0` structure does not exist on ASA. Local authentication (SSH/console) will be covered separately in a later section using AAA commands.
+ ASA does not belong to the same operating system family as IOS. Because of this, the `line console 0` structure does not exist on ASA. Configuration of local authentication (SSH/console) using AAA is in the next sections.
 
 #### Firewall_1
 ```
