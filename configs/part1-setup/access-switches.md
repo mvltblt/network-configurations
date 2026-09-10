@@ -1,7 +1,7 @@
 ## Access Switches
 
 #### ASW_A1
-​```
+```
 enable
 configure terminal
 hostname ASW_A1
@@ -13,10 +13,10 @@ line console 0
  logging synchronous
 end
 copy run start
-​```
+```
 
 #### ASW_A2
-​```
+```
 enable
 configure terminal
 hostname ASW_A2
@@ -28,10 +28,10 @@ line console 0
  logging synchronous
 end
 copy run start
-​```
+```
 
 #### ASW_A3
-​```
+```
 enable
 configure terminal
 hostname ASW_A3
@@ -43,10 +43,10 @@ line console 0
  logging synchronous
 end
 copy run start
-​```
+```
 
 #### ASW_A4
-​```
+```
 enable
 configure terminal
 hostname ASW_A4
@@ -58,10 +58,10 @@ line console 0
  logging synchronous
 end
 copy run start
-​```
+```
 
 #### ASW_B1
-​```
+```
 enable
 configure terminal
 hostname ASW_B1
@@ -73,10 +73,10 @@ line console 0
  logging synchronous
 end
 copy run start
-​```
+```
 
 #### ASW_B2
-​```
+```
 enable
 configure terminal
 hostname ASW_B2
@@ -88,10 +88,10 @@ line console 0
  logging synchronous
 end
 copy run start
-​```
+```
 
 #### ASW_B3
-​```
+```
 enable
 configure terminal
 hostname ASW_B3
@@ -103,10 +103,10 @@ line console 0
  logging synchronous
 end
 copy run start
-​```
+```
 
 #### ASW_B4
-​```
+```
 enable
 configure terminal
 hostname ASW_B4
@@ -118,4 +118,4 @@ line console 0
  logging synchronous
 end
 copy run start
-​```
+```
