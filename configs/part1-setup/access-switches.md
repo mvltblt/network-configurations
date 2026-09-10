@@ -1,5 +1,5 @@
 #### ASW_A1
-​```
+​``
 enable
 configure terminal
 hostname ASW_A1
@@ -11,10 +11,10 @@ line console 0
  logging synchronous
 end
 copy run start
-​```
+​``
 
 #### ASW_A2
-​```
+​``
 enable
 configure terminal
 hostname ASW_A2
@@ -26,7 +26,7 @@ line console 0
  logging synchronous
 end
 copy run start
-​```
+​``
 
 #### ASW_A3
 ​```
