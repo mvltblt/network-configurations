@@ -59,3 +59,35 @@ line console 0
 end
 copy run start
 ```
+
+## Core Switches
+
+#### CSW_1
+```
+enable
+configure terminal
+hostname CSW_1
+enable algorithm-type scrypt secret 1234
+username cisco algorithm-type scrypt secret password
+line console 0
+ login local
+ exec-timeout 15
+ logging synchronous
+end
+copy run start
+```
+
+#### CSW_2
+```
+enable
+configure terminal
+hostname CSW_2
+enable algorithm-type scrypt secret 1234
+username cisco algorithm-type scrypt secret password
+line console 0
+ login local
+ exec-timeout 15
+ logging synchronous
+end
+copy run start
+```
