@@ -44,6 +44,22 @@ interface gi1/0/4
  switchport trunk allowed vlan 100,110,120,130,140,199
  switchport nonegotiate
 
+interface port-channel1
+ description EtherChannel to DSW_A2
+ switchport mode trunk
+ switchport trunk native vlan 938
+ switchport trunk allowed vlan all
+ switchport nonegotiate
+
+interface range gi1/0/23-24
+ description Po1 member - EtherChannel to DSW_A2
+ switchport mode trunk
+ switchport trunk native vlan 938
+ switchport trunk allowed vlan all
+ switchport nonegotiate
+ channel-protocol pagp
+ channel-group 1 mode desirable
+
 end
 copy run start
 ```
@@ -92,6 +108,22 @@ interface gi1/0/4
  switchport trunk native vlan 938
  switchport trunk allowed vlan 100,110,120,130,140,199
  switchport nonegotiate
+
+interface port-channel1
+ description EtherChannel to DSW_A1
+ switchport mode trunk
+ switchport trunk native vlan 938
+ switchport trunk allowed vlan all
+ switchport nonegotiate
+
+interface range gi1/0/23-24
+ description Po1 member - EtherChannel to DSW_A1
+ switchport mode trunk
+ switchport trunk native vlan 938
+ switchport trunk allowed vlan all
+ switchport nonegotiate
+ channel-protocol pagp
+ channel-group 1 mode desirable
 
 end
 copy run start
@@ -144,6 +176,22 @@ interface gi1/0/4
  switchport trunk allowed vlan 200,210,220,230,240,260,299
  switchport nonegotiate
 
+interface port-channel1
+ description EtherChannel to DSW_B2
+ switchport mode trunk
+ switchport trunk native vlan 938
+ switchport trunk allowed vlan all
+ switchport nonegotiate
+
+interface range gi1/0/23-24
+ description Po1 member - EtherChannel to DSW_B2
+ switchport mode trunk
+ switchport trunk native vlan 938
+ switchport trunk allowed vlan all
+ switchport nonegotiate
+ channel-protocol pagp
+ channel-group 1 mode desirable
+
 end
 copy run start
 ```
@@ -194,6 +242,22 @@ interface gi1/0/4
  switchport trunk native vlan 938
  switchport trunk allowed vlan 200,210,220,230,240,260,299
  switchport nonegotiate
+
+interface port-channel1
+ description EtherChannel to DSW_B1
+ switchport mode trunk
+ switchport trunk native vlan 938
+ switchport trunk allowed vlan all
+ switchport nonegotiate
+
+interface range gi1/0/23-24
+ description Po1 member - EtherChannel to DSW_B1
+ switchport mode trunk
+ switchport trunk native vlan 938
+ switchport trunk allowed vlan all
+ switchport nonegotiate
+ channel-protocol pagp
+ channel-group 1 mode desirable
 
 end
 copy run start
