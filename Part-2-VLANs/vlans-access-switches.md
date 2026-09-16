@@ -2,28 +2,31 @@
 ```
 configure terminal
 vlan 100
-name GuestWi-Fi
+ name GuestWi-Fi
 vlan 199
-name Mgmt
+ name Mgmt
 
 interface range gi0/1-2
-description Trunk to DSW_A1 and DSW_A2
-switchport mode trunk
-switchport trunk native vlan 938
-switchport trunk allowed vlan 100,199
-switchport nonegotiate
+ description Trunk to DSW_A1 and DSW_A2
+ switchport mode trunk
+ switchport trunk native vlan 938
+ switchport trunk allowed vlan 100,199
+ switchport nonegotiate
 
 interface fa0/1
-description AP_A1 - Guest WiFi
-switchport mode access
-switchport access vlan 100
+ description LWAP_A1 - Guest WiFi AP (management)
+ switchport mode access
+ switchport access vlan 199
+ switchport nonegotiate
 
 interface range fa0/2-24
-description UNUSED - Administratively Shutdown
-shutdown
+ description UNUSED - Administratively Shutdown
+ switchport nonegotiate
+ shutdown
 end
 copy run start
 ```
+
 ### ASW_A2
 ```
 configure terminal
@@ -45,119 +48,129 @@ interface fa0/1
  description PrinterA1 - Sales
  switchport mode access
  switchport access vlan 110
+ switchport nonegotiate
 
 interface fa0/2
  description IP Phone1 + PC1 - Sales
  switchport mode access
  switchport access vlan 110
  switchport voice vlan 140
+ switchport nonegotiate
 
 interface fa0/3
- description AP_A2 - Sales WiFi
+ description LWAP_A2 - Sales AP (management)
  switchport mode access
- switchport access vlan 110
+ switchport access vlan 199
+ switchport nonegotiate
 
 interface range fa0/4-24
  description UNUSED - Administratively Shutdown
+ switchport nonegotiate
  shutdown
 end
 copy run start
 ```
+
+
 ### ASW_A3
 ```
-enable
 configure terminal
 vlan 120
-name HR
+ name HR
 vlan 140
-name Phones
+ name Phones
 vlan 150
-name PrinterA2
+ name PrinterA2
 vlan 199
-name Mgmt
+ name Mgmt
 
-interface range gi0/1 - 2
-description Trunk to DSW_A1 and DSW_A2
-switchport mode trunk
-switchport trunk native vlan 938
-switchport trunk allowed vlan 120,140,150,199
-switchport nonegotiate
+interface range gi0/1-2
+ description Trunk to DSW_A1 and DSW_A2
+ switchport mode trunk
+ switchport trunk native vlan 938
+ switchport trunk allowed vlan 120,140,150,199
+ switchport nonegotiate
 
 interface fa0/1
-description AP_A3 - HR WiFi
-switchport mode access
-switchport access vlan 120
+ description LWAP_A3 - HR AP (management)
+ switchport mode access
+ switchport access vlan 199
+ switchport nonegotiate
 
 interface fa0/2
-description IP Phone2 + PC2 - HR
-switchport mode access
-switchport access vlan 120
-switchport voice vlan 140
+ description IP Phone2 + PC2 - HR
+ switchport mode access
+ switchport access vlan 120
+ switchport voice vlan 140
+ switchport nonegotiate
 
 interface fa0/3
-description PrinterA2 - Shared (HR + Admins & Managers)
-switchport mode access
-switchport access vlan 150
+ description PrinterA2 - Shared (HR + Admins & Managers)
+ switchport mode access
+ switchport access vlan 150
+ switchport nonegotiate
 
-interface range fa0/4 - 24
-description UNUSED - Administratively Shutdown
-shutdown
-!
+interface range fa0/4-24
+ description UNUSED - Administratively Shutdown
+ switchport nonegotiate
+ shutdown
 end
 copy run start
 ```
+
+
 ### ASW_A4
 ```
-enable
 configure terminal
 vlan 100
-name GuestWifi
+ name GuestWifi
 vlan 110
-name Sales
+ name Sales
 vlan 120
-name HR
+ name HR
 vlan 130
-name Admins-Managers
+ name Admins-Managers
 vlan 140
-name Phones
+ name Phones
 vlan 199
-name Mgmt
+ name Mgmt
 
-interface range gi0/1 - 2
-description Trunk to DSW_A1 and DSW_A2
-switchport mode trunk
-switchport trunk native vlan 938
-switchport trunk allowed vlan 100,110,120,130,140,199
-switchport nonegotiate
+interface range gi0/1-2
+ description Trunk to DSW_A1 and DSW_A2
+ switchport mode trunk
+ switchport trunk native vlan 938
+ switchport trunk allowed vlan 100,110,120,130,140,199
+ switchport nonegotiate
 
 interface fa0/1
-description AP_A4 - Admins & Managers WiFi
-switchport mode access
-switchport access vlan 130
+ description LWAP_A4 - Admins & Managers AP (management)
+ switchport mode access
+ switchport access vlan 199
+ switchport nonegotiate
 
 interface fa0/2
-description IP Phone3 + PC3 - Admins & Managers
-switchport mode access
-switchport access vlan 130
-switchport voice vlan 140
+ description IP Phone3 + PC3 - Admins & Managers
+ switchport mode access
+ switchport access vlan 130
+ switchport voice vlan 140
+ switchport nonegotiate
 
 interface fa0/3
-description WLC_A - Wireless LAN Controller (trunk)
-switchport mode trunk
-switchport trunk native vlan 199
-switchport trunk allowed vlan 100,110,120,130,199
-switchport nonegotiate
+ description WLC_A - Wireless LAN Controller (trunk)
+ switchport mode trunk
+ switchport trunk native vlan 199
+ switchport trunk allowed vlan 100,110,120,130,199
+ switchport nonegotiate
 
-interface range fa0/4 - 24
-description UNUSED - Administratively Shutdown
-shutdown
-
+interface range fa0/4-24
+ description UNUSED - Administratively Shutdown
+ switchport nonegotiate
+ shutdown
 end
 copy run start
 ```
 ### ASW_B1
 ```
-enable
 configure terminal
 vlan 200
  name Engineers
@@ -166,7 +179,7 @@ vlan 240
 vlan 299
  name Mgmt
 
-interface range gi0/1 - 2
+interface range gi0/1-2
  description Trunk to DSW_B1 and DSW_B2
  switchport mode trunk
  switchport trunk native vlan 938
@@ -174,26 +187,28 @@ interface range gi0/1 - 2
  switchport nonegotiate
 
 interface fa0/1
- description AP_B1 - Engineers WiFi
+ description LWAP_B1 - Engineers AP (management)
  switchport mode access
- switchport access vlan 200
+ switchport access vlan 299
+ switchport nonegotiate
 
 interface fa0/2
  description IP Phone4 + PC4 - Engineers
  switchport mode access
  switchport access vlan 200
  switchport voice vlan 240
+ switchport nonegotiate
 
-interface range fa0/3 - 24
+interface range fa0/3-24
  description UNUSED - Administratively Shutdown
+ switchport nonegotiate
  shutdown
-
 end
 copy run start
 ```
+
 ### ASW_B2
 ```
-enable
 configure terminal
 vlan 210
  name HR-Logistics
@@ -204,7 +219,7 @@ vlan 250
 vlan 299
  name Mgmt
 
-interface range gi0/1 - 2
+interface range gi0/1-2
  description Trunk to DSW_B1 and DSW_B2
  switchport mode trunk
  switchport trunk native vlan 938
@@ -215,28 +230,31 @@ interface fa0/1
  description PrinterB1 - Shared (Engineers + HR & Logistics)
  switchport mode access
  switchport access vlan 250
+ switchport nonegotiate
 
 interface fa0/2
  description IPPhoneB1 + PC5 - HR & Logistics
  switchport mode access
  switchport access vlan 210
  switchport voice vlan 240
+ switchport nonegotiate
 
 interface fa0/3
- description AP_B2 - HR & Logistics WiFi
+ description LWAP_B2 - HR & Logistics AP (management)
  switchport mode access
- switchport access vlan 210
+ switchport access vlan 299
+ switchport nonegotiate
 
-interface range fa0/4 - 24
+interface range fa0/4-24
  description UNUSED - Administratively Shutdown
+ switchport nonegotiate
  shutdown
-
 end
 copy run start
 ```
+
 ### ASW_B3
 ```
-enable
 configure terminal
 vlan 220
  name Accounting-Finance
@@ -245,7 +263,7 @@ vlan 240
 vlan 299
  name Mgmt
 
-interface range gi0/1 - 2
+interface range gi0/1-2
  description Trunk to DSW_B1 and DSW_B2
  switchport mode trunk
  switchport trunk native vlan 938
@@ -253,26 +271,28 @@ interface range gi0/1 - 2
  switchport nonegotiate
 
 interface fa0/1
- description AP_B3 - Accounting & Finance WiFi
+ description LWAP_B3 - Accounting & Finance AP (management)
  switchport mode access
- switchport access vlan 220
+ switchport access vlan 299
+ switchport nonegotiate
 
 interface fa0/2
  description IPPhoneB2 + PC6 - Accounting & Finance
  switchport mode access
  switchport access vlan 220
  switchport voice vlan 240
+ switchport nonegotiate
 
-interface range fa0/3 - 24
+interface range fa0/3-24
  description UNUSED - Administratively Shutdown
+ switchport nonegotiate
  shutdown
-
 end
 copy run start
 ```
+
 ### ASW_B4
 ```
-enable
 configure terminal
 vlan 200
  name Engineers
@@ -289,7 +309,7 @@ vlan 260
 vlan 299
  name Mgmt
 
-interface range gi0/1 - 2
+interface range gi0/1-2
  description Trunk to DSW_B1 and DSW_B2
  switchport mode trunk
  switchport trunk native vlan 938
@@ -297,15 +317,17 @@ interface range gi0/1 - 2
  switchport nonegotiate
 
 interface fa0/1
- description AP_B4 - Admins & Managers WiFi
+ description LWAP_B4 - Admins & Managers AP (management)
  switchport mode access
- switchport access vlan 230
+ switchport access vlan 299
+ switchport nonegotiate
 
 interface fa0/2
  description IPPhoneB3 + PC7 - Admins & Managers
  switchport mode access
  switchport access vlan 230
  switchport voice vlan 240
+ switchport nonegotiate
 
 interface fa0/3
  description WLC_B - Wireless LAN Controller (trunk)
@@ -318,11 +340,12 @@ interface fa0/4
  description PrinterB2 - Shared (Accounting & Finance + Admins & Managers)
  switchport mode access
  switchport access vlan 260
+ switchport nonegotiate
 
-interface range fa0/5 - 24
+interface range fa0/5-24
  description UNUSED - Administratively Shutdown
+ switchport nonegotiate
  shutdown
-
 end
 copy run start
 ```
