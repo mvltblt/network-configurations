@@ -1,3 +1,5 @@
+### DMZ_SW1
+```
 configure terminal
 vlan 400
  name DMZ
@@ -9,7 +11,7 @@ interface gi0/1
  switchport nonegotiate
 
 interface gi1/1
- description Redundant uplink to Firewall_2 - unused without ASA failover support
+ description Redundant uplink to Firewall_2 - unused without ASA failover support :/
  switchport mode access
  switchport access vlan 400
  switchport nonegotiate
@@ -29,3 +31,4 @@ interface gi3/1
 
 end
 copy run start
+```
