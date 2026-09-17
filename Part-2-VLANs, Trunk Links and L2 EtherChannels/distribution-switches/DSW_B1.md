@@ -17,6 +17,8 @@ vlan 260
  name PrinterB2
 vlan 299
  name Mgmt
+vlan 999
+ name Blackhole
 
 interface gi1/0/1
  description Trunk to ASW_B1
@@ -61,6 +63,20 @@ interface range gi1/0/23-24
  switchport nonegotiate
  channel-protocol pagp
  channel-group 1 mode desirable
+
+interface range gi1/0/7-22
+ description UNUSED - Administratively Shutdown
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ shutdown
+
+interface range gi1/0/25-28
+ description UNUSED - Administratively Shutdown
+ switchport mode access
+ switchport access vlan 999
+ switchport nonegotiate
+ shutdown
 
 end
 copy run start
