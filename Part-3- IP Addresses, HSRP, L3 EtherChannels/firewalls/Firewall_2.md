@@ -1,4 +1,4 @@
-### Firewall_2.md
+### Firewall_2
 ```
 configure terminal
 
@@ -32,6 +32,14 @@ interface GigabitEthernet1/3
 
 interface GigabitEthernet1/4
  description Redundant DMZ link - unused without ASA failover support
+ shutdown
+
+interface GigabitEthernet1/7
+ description UNUSED - Administratively Shutdown
+ shutdown
+
+interface GigabitEthernet1/8
+ description UNUSED - Administratively Shutdown
  shutdown
 
 end
