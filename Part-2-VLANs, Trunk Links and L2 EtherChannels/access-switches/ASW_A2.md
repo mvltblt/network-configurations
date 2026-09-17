@@ -7,6 +7,8 @@ vlan 140
  name Phones
 vlan 199
  name Mgmt
+vlan 999
+ name Blackhole
 
 interface range gi0/1-2
  description Trunk to DSW_A1 and DSW_A2
@@ -36,8 +38,11 @@ interface fa0/3
 
 interface range fa0/4-24
  description UNUSED - Administratively Shutdown
+ switchport mode access
+ switchport access vlan 999
  switchport nonegotiate
  shutdown
+
 end
 copy run start
 ```
