@@ -33,7 +33,7 @@ interface GigabitEthernet1/3
  no shutdown
 
 interface GigabitEthernet1/4
- description UNUSED - No second DMZ switch
+ description UNUSED - Administraitvely Shutdown
  shutdown
 
 interface GigabitEthernet1/7
