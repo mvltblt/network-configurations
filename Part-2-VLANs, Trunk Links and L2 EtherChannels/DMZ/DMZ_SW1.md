@@ -31,6 +31,12 @@ interface gi3/1
  switchport access vlan 400
  switchport nonegotiate
 
+interface gi4/1
+ description DNS_2
+ switchport mode access
+ switchport access vlan 400
+ switchport nonegotiate
+
 end
 copy run start
 ```
