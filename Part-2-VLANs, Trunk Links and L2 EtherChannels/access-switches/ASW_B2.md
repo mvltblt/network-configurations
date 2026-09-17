@@ -9,6 +9,8 @@ vlan 250
  name PrinterB1
 vlan 299
  name Mgmt
+vlan 999
+ name Blackhole
 
 interface range gi0/1-2
  description Trunk to DSW_B1 and DSW_B2
@@ -38,8 +40,11 @@ interface fa0/3
 
 interface range fa0/4-24
  description UNUSED - Administratively Shutdown
+ switchport mode access
+ switchport access vlan 999
  switchport nonegotiate
  shutdown
+
 end
 copy run start
 ```
