@@ -3,6 +3,9 @@
 configure terminal
 ip routing
 
+vlan 998
+ name TRANSIT_OSPF_B
+
 interface vlan 200
  ip address 172.16.4.3 255.255.255.128
  no shutdown
@@ -25,7 +28,9 @@ interface vlan 220
  standby version 2
  standby 220 ip 172.16.5.65
  standby 220 priority 110
- standby 220 preempt
+ standby 220 preempt delay minimum 90
+ standby 220 track GigabitEthernet1/0/5 15
+ standby 220 track GigabitEthernet1/0/6 15
 
 interface vlan 230
  ip address 172.16.5.131 255.255.255.224
@@ -33,7 +38,9 @@ interface vlan 230
  standby version 2
  standby 230 ip 172.16.5.129
  standby 230 priority 110
- standby 230 preempt
+ standby 230 preempt delay minimum 90
+ standby 230 track GigabitEthernet1/0/5 15
+ standby 230 track GigabitEthernet1/0/6 15
 
 interface vlan 240
  ip address 172.16.5.3 255.255.255.192
@@ -49,7 +56,9 @@ interface vlan 250
  standby version 2
  standby 250 ip 172.16.5.193
  standby 250 priority 110
- standby 250 preempt
+ standby 250 preempt delay minimum 90
+ standby 250 track GigabitEthernet1/0/5 15
+ standby 250 track GigabitEthernet1/0/6 15
 
 interface vlan 260
  ip address 172.16.5.203 255.255.255.248
@@ -57,7 +66,9 @@ interface vlan 260
  standby version 2
  standby 260 ip 172.16.5.201
  standby 260 priority 110
- standby 260 preempt
+ standby 260 preempt delay minimum 90
+ standby 260 track GigabitEthernet1/0/5 15
+ standby 260 track GigabitEthernet1/0/6 15
 
 interface vlan 299
  ip address 172.16.5.163 255.255.255.224
@@ -67,14 +78,21 @@ interface vlan 299
  standby 299 priority 90
  standby 299 preempt
 
+interface vlan 998
+ description OSPF transit to DSW_B1
+ ip address 10.255.254.114 255.255.255.252
+ no shutdown
+
 interface gi1/0/5
+ description Link to CSW_1
  no switchport
- ip address 10.255.254.50 255.255.255.252
+ ip address 10.255.254.102 255.255.255.252
  no shutdown
 
 interface gi1/0/6
+ description Link to CSW_2
  no switchport
- ip address 10.255.254.66 255.255.255.252
+ ip address 10.255.254.110 255.255.255.252
  no shutdown
 
 interface loopback0
