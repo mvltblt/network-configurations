@@ -1,7 +1,5 @@
 ### DSW_B2
 ```
-hostname DSW_B2
-!
 interface Loopback0
  ip address 10.255.255.8 255.255.255.255
 !
@@ -102,6 +100,7 @@ router ospf 1
  router-id 10.255.255.8
  log-adjacency-changes
  area 20 authentication message-digest
+ passive-interface Loopback0
  passive-interface Vlan200
  passive-interface Vlan210
  passive-interface Vlan220
@@ -116,4 +115,6 @@ router ospf 1
  network 10.255.254.108 0.0.0.3 area 20
  network 10.255.254.112 0.0.0.3 area 20
  network 10.255.255.8 0.0.0.0 area 20
+!
+ip route 0.0.0.0 0.0.0.0 10.255.254.109
 ```
