@@ -1,7 +1,5 @@
 ### CSW_2
 ```
-hostname CSW_2
-!
 interface Loopback0
  ip address 10.255.255.4 255.255.255.255
 !
@@ -76,6 +74,10 @@ router ospf 1
  area 0 authentication message-digest
  area 10 authentication message-digest
  area 20 authentication message-digest
+ area 10 range 172.16.0.0 255.255.254.0
+ area 10 range 10.255.254.64 255.255.255.224
+ area 20 range 172.16.4.0 255.255.254.0
+ area 20 range 10.255.254.96 255.255.255.224
  redistribute static subnets
  passive-interface Loopback0
  passive-interface Vlan300
