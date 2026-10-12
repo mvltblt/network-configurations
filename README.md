@@ -4,6 +4,8 @@
 
 Configurations of a two-office enterprise network built in Cisco Packet Tracer: three-tier design (Access, Distribution, Core), a DMZ behind two ASA firewalls, and two Edge Routers multihomed to two ISPs with eBGP.
 
+The full write-up explaining every design decision is on my blog: [Enterprise Network Project](https://www.mvtechblog.com/enterprise-network-project/).
+
 Each part holds only the commands introduced in that part of the write-up, so the parts are meant to be applied in order. Every block is plain CLI that can be pasted into the device as it is.
 
 | Part | Contents |
@@ -18,6 +20,20 @@ Each part holds only the commands introduced in that part of the write-up, so th
 | Part 8 - Wireless | DHCP relay for the APs, WLC, WLAN and AP settings |
 
 [PORT-MAP.md](PORT-MAP.md) lists every cabled port in the topology.
+
+## Packet Tracer File
+
+[enterprise-network-project.pkt](enterprise-network-project.pkt) contains the complete topology with every configuration in this repository applied. It was built with Cisco Packet Tracer 9.0.1; older versions may not open it.
+
+All passwords are lab values:
+
+| Login | Username | Password |
+| --- | --- | --- |
+| RADIUS (network devices) | `netadmin` | `admin1234` |
+| Local fallback (used only when the RADIUS server is unreachable) | `cisco` | `password` |
+| Enable secret | – | `1234` |
+
+More accounts, including the staff Wi-Fi users for WPA2-Enterprise, are defined on the RADIUS server (172.16.8.6) under Services > AAA > User Setup.
 
 ## Notes
 
