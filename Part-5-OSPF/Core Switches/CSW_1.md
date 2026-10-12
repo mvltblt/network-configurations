@@ -35,7 +35,6 @@ router ospf 1
  area 10 authentication message-digest
  area 20 authentication message-digest
  area 0 authentication message-digest
- redistribute static subnets
  passive-interface GigabitEthernet1/0/7
  passive-interface GigabitEthernet1/0/8
  passive-interface Loopback0
